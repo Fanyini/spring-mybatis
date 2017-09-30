@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     </typeAliases>
 	<!-- 加载映射文件 -->
 	<mappers>
-		<mapper resource="sqlMap/User.xml"/> 
-		<package name="com.ztx.ssm.mapper"/>  
+		<mapper resource="sqlMap/User.xml"/>
+	<!-- <package name="com.ztx.ssm.mapper"/> -->
 	</mappers>
 </configuration>

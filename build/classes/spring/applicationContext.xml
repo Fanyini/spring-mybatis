@@ -40,4 +40,26 @@
     <bean id="userDao" class="com.ztx.ssm.dao.UserDaoImpl">
     	<property name="SqlSessionFactory" ref="SqlSessionFactory"/>
     </bean>
+    
+    <!-- 
+    	mapper 代理
+    	MapperFactoryBean：根据mapper接口生成代理对象
+     -->
+	<!-- <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"> -->
+	<!-- mapperInterface 指定mapper接口 -->
+	<!-- <property name="mapperInterface" value="com.ztx.ssm.mapper.UserMapper"/> -->
+	<!-- <property name="SqlSessionFactory" ref="SqlSessionFactory"/> -->
+	<!-- </bean> -->
+     
+     <!-- mapper批量扫描：从mapper包中扫描出mapper接口，自动创建代理对象并且在spring容器中注册
+    	遵循规范：将mapper.java和mapper.xml 映射文件名称保持一致，且在同一个目录中
+    	自动扫描出来的mapper的 bean的id 为mapper类名（首字母小写）-->
+     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+     	<!--
+     		 指定扫描的报名
+     		 如果为多个包，每个包中间使用半角逗号分隔
+     	 -->
+     	<property name="basePackage" value="com.ztx.ssm.mapper"/>
+     	<property name="sqlSessionFactoryBeanName" value="SqlSessionFactory"/>
+     </bean>
 </beans>
